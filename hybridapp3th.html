@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+      #area1{
+          width: 100%;
+          height: 200px;
+          background-color: aqua;
+          text-align: center;
+      }
+      #area1 input,button{
+        margin-top: 100px;
+      }
+      #area2{
+          width: 30%;
+          height: 400px;
+          background-color: antiquewhite;
+          float: left;
+          text-align: center;
+      }
+      #area3{
+          width: 70%;
+          height: 400px;
+          background-color: aquamarine;
+          float: left;
+          text-align: center;
+      }
+      #button1{
+          width: 50px;
+          height: 50px;
+          background-color: greenyellow;
+          display: block;
+          margin-bottom: 50px;
+          margin-left: 40%;
+          margin-top: 50px;
+      }
+      #button2{
+          width: 50px;
+          height: 50px;
+          background-color: greenyellow;
+          display: block;
+          margin-bottom: 50px;
+          margin-left: 40%;
+          margin-top: 50px;
+      }
+      #button3{
+          width: 50px;
+          height: 50px;
+          background-color: greenyellow;
+          display: block;
+          margin-bottom: 50px;
+          margin-left: 40%;
+          margin-top: 50px;
+      }
+  </style>
+</head>
+<body>
+
+  <!-- 영역 1 -->
+  <div id="area1">
+    <input type="text" id="id" placeholder="아이디를 입력하세요.">
+    <button id="login">로그인</button>
+  </div>
+
+  <!-- 영역 2 -->
+  <div id="area2">
+    <button class="button" id="button1">버튼1</button>
+    <button class="button" id="button2">버튼2</button>
+    <button class="button" id="button3">버튼3</button>
+  </div>
+
+  <!-- 영역 3 -->
+  <div id="area3">
+    <p id="content"></p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // 영역 1
+    const idInput = document.querySelector("#id");
+    const loginButton = document.querySelector("#login");
+
+    loginButton.addEventListener("click", () => {
+      // 닉네임과 대표사진 출력
+      document.querySelector("#area1").innerHTML = `
+        <h1>bhj1101</h1>
+        <img src="https://avatars.githubusercontent.com/u/102143141?v=4" width="100" style="background-color: black;">
+      `;
+      // 로그인 버튼을 로그아웃 버튼으로 변경
+      loginButton.textContent = "로그아웃";
+    });
+
+    // 영역 2, 3
+    const button1 = document.querySelector("#button1");
+    const button2 = document.querySelector("#button2");
+    const button3 = document.querySelector("#button3");
+    const content = document.querySelector("#content");
+
+    // 버튼1 클릭 이벤트
+    button1.addEventListener("click", () => {
+      // 버튼1의 내용을 영역3에 출력
+      content.innerHTML = button1.dataset.content;
+    });
+
+    // 버튼2 클릭 이벤트
+    button2.addEventListener("click", () => {
+      // 버튼2의 내용을 영역3에 출력
+      content.innerHTML = button2.dataset.content;
+    });
+
+    // 버튼3 클릭 이벤트
+    button3.addEventListener("click", () => {
+      // 영역3에 나오고 있는 글을 내용을 버튼3으로 옮긴다.
+      // 영역3에 버튼1의 내용이 나오고 있다면 버튼1에 저장된 내용을 삭제하고 "저장되었습니다" 라고 영역3에 출력
+      if (content.innerHTML === button1.dataset.content) {
+        button1.dataset.content = "";
+        content.innerHTML = "저장되었습니다";
+      } else {
+        // 버튼3이 비어있는 경우
+        if (button3.dataset.content === "") {
+          // 영역 3에 나타나있는 버튼의 내용을 훔쳐온다.
+          // 도둑질 당한 버튼은 빈털털이가 된다.
+          const buttons = document.querySelectorAll(".button");
+          for (const button of buttons) {
+            if (button.dataset.content !== "") {
+              button3.dataset.content = button.dataset.content;
+              button.dataset.content = "";
+              break;
+            }
+          }
+        }
+      }
+
+      // 내용이 없는 경우 팝업 띄우기
+      if (content.innerHTML === "저장되었습니다") {
+        // alert("내용이 없습니다.");
+        return;
+      }
+    });
+
+    // 버튼1, 2의 내용 설정
+    button1.dataset.content = "자기소개";
+    button2.dataset.content = "이은석에 대한 소감";
+  </script>
+
+</body>
+</html>
