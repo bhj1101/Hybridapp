@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button onclick="sendRequest()">Button</button>
+  <p id="result"></p>
+
+  <script>
+    function sendRequest() {
+      const url = "http://localhost:8080/hi";
+
+      fetch(url, { method: "GET" })
+        .then((response) => response.text())
+        .then((data) => {
+          document.querySelector("#result").innerHTML = data;
+        });
+    }
+  </script>
+</body>
+</html>
