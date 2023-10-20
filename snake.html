@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <style>
+        #game-container{
+            position: relative;
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+        }
+        #snake{
+            position: absolute;
+            background-color: green;
+            width: 33%;
+            height: 33%;
+            border-radius: 50%;
+        }
+        #apple{
+            position: absolute;
+            background-color: red;
+            width: 33%;
+            height: 33%;
+            border-radius: 50%;
+        }
+        #obstacles{
+            position: absolute;
+        }
+        #info{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="snake"></div>
+        <div id="apple"></div>
+        <div id="obstacles"></div>
+    </div>
+    <div id="info">
+        <span id="time"></span>
+        <span id="length"></span>
+    </div>
+</body>
+<script>
+    const gameContainer=document.getElementById("game-container");
+    const snake=document.getElementById("snake");
+    const apple=document.getElementById("apple");
+    const obstacles=document.getElementById("obstacles");
+    const timeDisplay=document.getElementById("time");
+    const lengthDisplay=document.getElementById("length");
+
+    let snakeX,snakeY,appleX,appleY;
+    let directionX=1,directionY=0;
+    let snakeLength=3;
+    let gameRunning=true;
+
+    function initializeGame(){
+
+    }
+
+    function gameLoop(){
+
+    }
+
+    function handleMouseClick(){
+
+    }
+
+    function spawnObstacles(){
+
+    }
+
+    function checkCollisions(){
+
+    }
+
+    function updateTimeAndDisplay(){
+
+    }
+
+    initializeGame();
+</script>
+</html>
